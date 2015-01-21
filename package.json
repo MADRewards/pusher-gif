@@ -1,11 +1,11 @@
 {
   "authors": [
     "Nathan Walker <nathan.walker@infowrap.com>",
-    "Kirk Strobeck <kirk.strobeck@infowrap.com>"
+    "Kirk Strobeck <kirk@strobeck.com>"
   ],
   "name": "pusher-gif",
   "homepage": "https://github.com/infowrap/pusher-gif",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "engines": {
     "node": ">=0.8.0"
   },
