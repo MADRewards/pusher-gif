@@ -1,2 +1,5 @@
-node_modules
+*.sublime-workspace
+.DS_Store
 lib/components
+node_modules
+pusher-gif.js

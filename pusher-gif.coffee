@@ -108,8 +108,4 @@ angular.module("pusher-gif", [])
           # fpFallback should be an object with a 'url' property
           fpHelper.metadata(scope.fpFallback).then (dimensions) ->
             setElSrc(dimensions.width, dimensions.height)
-
-
 ])
-
-
