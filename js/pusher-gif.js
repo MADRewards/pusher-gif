@@ -27,7 +27,6 @@ function base64Pusher(s) {
   var l = s.length;
   var i = 0;
   var r = '';
-
   do {
     c1 = s.charCodeAt(i);
     e1 = c1 >> 2;
@@ -46,7 +45,6 @@ function base64Pusher(s) {
     }
     r += ch.charAt(e1) + ch.charAt(e2) + ch.charAt(e3) + ch.charAt(e4);
   } while ((i += 3) < l);
-
   return r;
 }
 
@@ -81,13 +79,21 @@ function bitstream_get() {
     if (chunklen > 255) chunklen = 255;
     result += String.fromCharCode(chunklen) + data.substring(i, i + 255);
   }
-  return result + '\0'
+  return result + '\0';
 }
 
 function make_glif(w, h, d, fr, fg, fb) {
-  var r = String.fromCharCode(w % 256) + String.fromCharCode(w / 256) + String.fromCharCode(h % 256) + String.fromCharCode(h / 256)
-  gif = 'GIF89a' + r + '\xf0\0\0\xff\xff\xff' + String.fromCharCode(fr) + String.fromCharCode(fg) + String.fromCharCode(fb) + '\x21\xf9\4\1\0\0\0\0,\0\0\0\0' + r + '\0\2';
-
+  var r = String.fromCharCode(w % 256) +
+    String.fromCharCode(w / 256) +
+    String.fromCharCode(h % 256) +
+    String.fromCharCode(h / 256);
+  gif = 'GIF89a' + r + '\xf0\0\0\xff\xff\xff' +
+    String.fromCharCode(fr) +
+    String.fromCharCode(fg) +
+    String.fromCharCode(fb) +
+    '\x21\xf9\4\1\0\0\0\0,\0\0\0\0' +
+    r +
+    '\0\2';
   var b = new bitstream();
   for (y = 0; y < h; y++) {
     for (x = 0; x < w; x++) {
@@ -99,8 +105,7 @@ function make_glif(w, h, d, fr, fg, fb) {
       b.write_bit(1);
     }
   }
-  gif += b.get() + ';'
-
+  gif += b.get() + ';';
   return 'data:image/gif;base64,' + base64Pusher(gif);
 }
 
